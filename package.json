@@ -1,0 +1,15 @@
+{
+  "name": "constrik-landing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "constrik.com — static marketing landing.",
+  "scripts": {
+    "build": "BUILD_MIN=1 node build.mjs",
+    "build:dev": "node build.mjs",
+    "serve": "python3 -m http.server 4323 --directory dist"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.0"
+  }
+}
