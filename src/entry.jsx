@@ -6,6 +6,9 @@
 
 const PROD_TWEAKS = {
   showPricing: true,
+  // Hide "Iniciar sesión" until app.constrik.com is live. Flip to true +
+  // push the day the app deploys.
+  showLogin: false,
   bookingUrl: "https://calendar.app.google/yNRy3F8fUua9oNsK7",
   loginUrl: "https://app.constrik.com/login",
 };

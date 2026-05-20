@@ -61,7 +61,7 @@ function Nav({ t }) {
           <a href="mailto:info@constrik.com" className="hover:text-slate-900">Preguntas</a>
         </nav>
         <div className="ml-auto flex items-center gap-3">
-          <a href={t.loginUrl} className="hidden sm:inline-block text-[13.5px] text-slate-600 hover:text-slate-900 whitespace-nowrap">Iniciar sesión</a>
+          {t.showLogin && <a href={t.loginUrl} className="hidden sm:inline-block text-[13.5px] text-slate-600 hover:text-slate-900 whitespace-nowrap">Iniciar sesión</a>}
           <CtaButton variant="primary" size="sm" href={t.bookingUrl} target="_blank">Pedir demo</CtaButton>
         </div>
       </div>
