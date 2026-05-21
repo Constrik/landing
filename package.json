@@ -1,15 +1,26 @@
 {
   "name": "constrik-landing",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "type": "module",
-  "description": "constrik.com — static marketing landing.",
+  "description": "constrik.com — Next 16 static landing.",
   "scripts": {
-    "build": "BUILD_MIN=1 node build.mjs",
-    "build:dev": "node build.mjs",
-    "serve": "python3 -m http.server 4323 --directory dist"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@next/third-parties": "^16.1.6",
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
-    "esbuild": "^0.28.0"
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
