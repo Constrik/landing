@@ -13,17 +13,17 @@ export function Nav({ t }: { t: Tweaks }) {
           aria-label="Principal"
           className="hidden md:flex items-center gap-7 ml-12 text-[13.5px] text-slate-600 whitespace-nowrap"
         >
-          <a href="#beneficios" className="hover:text-slate-900">
+          <a href="/#beneficios" className="hover:text-slate-900">
             Beneficios
           </a>
-          <a href="#soluciones" className="hover:text-slate-900">
-            Soluciones
+          <a href="/#productos" className="hover:text-slate-900">
+            Productos
           </a>
-          <a href="#para-quien" className="hover:text-slate-900">
+          <a href="/#para-quien" className="hover:text-slate-900">
             Para quién
           </a>
           {t.showPricing && (
-            <a href="#precio" className="hover:text-slate-900">
+            <a href="/#precio" className="hover:text-slate-900">
               Precio
             </a>
           )}

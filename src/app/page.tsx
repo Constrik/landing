@@ -1,11 +1,11 @@
 import { ClosingCta } from "@/components/ClosingCta";
-import { Features } from "@/components/Features";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { Nav } from "@/components/Nav";
 import { Personas } from "@/components/Personas";
 import { Pillars } from "@/components/Pillars";
 import { Pricing } from "@/components/Pricing";
+import { Products } from "@/components/Products";
 import { PROD_TWEAKS } from "@/lib/tweaks";
 
 export default function Page() {
@@ -16,7 +16,7 @@ export default function Page() {
       <main>
         <Hero t={t} />
         <Pillars />
-        <Features />
+        <Products />
         <Personas />
         <Pricing t={t} />
         <ClosingCta t={t} />

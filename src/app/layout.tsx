@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleTagManager } from "@next/third-parties/google";
+import { PRODUCTS } from "@/lib/products";
 import "./globals.css";
 
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
@@ -150,6 +151,26 @@ const jsonLd = {
         },
       },
       provider: { "@id": `${SITE_URL}#organization` },
+      hasPart: PRODUCTS.map((p) => ({
+        "@type": "SoftwareApplication",
+        "@id": `${SITE_URL}/${p.slug}#software`,
+        name: p.name,
+        url: `${SITE_URL}/${p.slug}`,
+        applicationCategory: "BusinessApplication",
+        applicationSubCategory: p.category,
+        description: p.description,
+      })),
+    },
+    {
+      "@type": "ItemList",
+      "@id": `${SITE_URL}#products`,
+      name: "Catálogo de productos Constrik",
+      itemListElement: PRODUCTS.map((p, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        url: `${SITE_URL}/${p.slug}`,
+        name: p.name,
+      })),
     },
   ],
 };
