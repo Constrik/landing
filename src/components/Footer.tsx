@@ -74,8 +74,18 @@ export function Footer() {
                 </a>
               </li>
               <li>
+                <a href="/aviso-legal" className="hover:text-slate-900">
+                  Aviso legal
+                </a>
+              </li>
+              <li>
+                <a href="/privacidad" className="hover:text-slate-900">
+                  Privacidad
+                </a>
+              </li>
+              <li>
                 <a href="/cookies" className="hover:text-slate-900">
-                  Política de cookies
+                  Cookies
                 </a>
               </li>
             </ul>
@@ -83,9 +93,9 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-slate-100 flex flex-col md:flex-row items-start md:items-center gap-2 text-[11.5px] text-slate-400">
-          <span>Constrik Intelligence SL · B88773114</span>
+          <span>Constrik Intelligence SL (en constitución) · B88773114</span>
           <span className="hidden md:inline">·</span>
-          <span>Barcelona, España</span>
+          <span>Castelldefels (Barcelona), España</span>
           <span className="md:ml-auto">
             © 2026 Constrik Intelligence SL. Todos los derechos reservados.
           </span>

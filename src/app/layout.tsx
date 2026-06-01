@@ -117,7 +117,10 @@ const jsonLd = {
       vatID: "B88773114",
       address: {
         "@type": "PostalAddress",
-        addressLocality: "Barcelona",
+        streetAddress: "Passeig Garbí 132",
+        postalCode: "08860",
+        addressLocality: "Castelldefels",
+        addressRegion: "Barcelona",
         addressCountry: "ES",
       },
     },

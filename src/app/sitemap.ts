@@ -17,13 +17,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly",
     priority: 0.8,
   }));
-  const legal: MetadataRoute.Sitemap = [
-    {
-      url: `${SITE_URL}/cookies`,
+  const legal: MetadataRoute.Sitemap = ["/aviso-legal", "/privacidad", "/cookies"].map(
+    (path) => ({
+      url: `${SITE_URL}${path}`,
       lastModified: now,
-      changeFrequency: "yearly",
+      changeFrequency: "yearly" as const,
       priority: 0.1,
-    },
-  ];
+    }),
+  );
   return [home, ...productPages, ...legal];
 }
