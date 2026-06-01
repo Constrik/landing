@@ -1,10 +1,14 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { PRODUCTS } from "@/lib/products";
+import { CookieBanner } from "@/components/CookieBanner";
 import "./globals.css";
 
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+// GTM container (público, no secreto). Default explícito para que cargue en prod
+// aunque no esté la env var en Vercel; sobreescribible con NEXT_PUBLIC_GTM_ID.
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID ?? "GTM-NCPC92V3";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -182,6 +186,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={`${geist.variable} ${geistMono.variable}`}>
+      {/* Consent Mode v2: por defecto DENEGADO antes de cargar GTM (RGPD).
+          El banner de cookies actualiza el consentimiento al aceptar. */}
+      <Script id="consent-default" strategy="beforeInteractive">
+        {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});gtag('set','ads_data_redaction',true);gtag('set','url_passthrough',true);try{if(localStorage.getItem('constrik_consent')==='granted'){gtag('consent','update',{ad_storage:'granted',analytics_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});}}catch(e){}`}
+      </Script>
       {GTM_ID && <GoogleTagManager gtmId={GTM_ID} />}
       <body>
         {GTM_ID && (
@@ -196,6 +205,7 @@ export default function RootLayout({
           </noscript>
         )}
         {children}
+        <CookieBanner />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

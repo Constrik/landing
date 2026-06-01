@@ -74,8 +74,8 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="hover:text-slate-900">
-                  Aviso legal
+                <a href="/cookies" className="hover:text-slate-900">
+                  Política de cookies
                 </a>
               </li>
             </ul>

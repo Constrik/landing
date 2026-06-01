@@ -17,5 +17,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly",
     priority: 0.8,
   }));
-  return [home, ...productPages];
+  const legal: MetadataRoute.Sitemap = [
+    {
+      url: `${SITE_URL}/cookies`,
+      lastModified: now,
+      changeFrequency: "yearly",
+      priority: 0.1,
+    },
+  ];
+  return [home, ...productPages, ...legal];
 }
