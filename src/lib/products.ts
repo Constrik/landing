@@ -146,8 +146,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: "memoria",
-    name: "Histórico Inteligente de Precios",
-    shortName: "Histórico de Precios",
+    name: "Base de Datos Inteligente de Precios BC3",
+    shortName: "Base de Datos de Precios",
     category: "Conocimiento",
     headline: "Tu histórico de precios, vivo y buscable",
     tagline:

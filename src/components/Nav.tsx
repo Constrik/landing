@@ -6,7 +6,7 @@ export function Nav({ t }: { t: Tweaks }) {
   return (
     <header className="sticky top-0 z-30 bg-white/85 backdrop-blur border-b border-slate-200/70">
       <div className="max-w-6xl mx-auto px-6 lg:px-8 h-16 flex items-center">
-        <a href="#" className="flex items-center" aria-label="Constrik — inicio">
+        <a href="/" className="flex items-center" aria-label="Constrik — inicio">
           <Logo />
         </a>
         <nav

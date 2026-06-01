@@ -12,8 +12,12 @@ export function Products() {
             Siete productos, una sola plataforma
           </h2>
           <p className="mt-4 text-[15px] text-slate-600 max-w-xl leading-relaxed">
-            Cada constructora elige los módulos que necesita. Se conectan entre
-            sí porque parten del mismo BC3 y del mismo modelo.
+            <strong className="font-semibold text-slate-900">
+              Constrik complementa tu flujo de trabajo con Presto.
+            </strong>{" "}
+            Añade solo la herramienta que necesites —trabaja sobre tu mismo
+            BC3— o contrata la plataforma completa. Los siete productos
+            comparten BC3 y modelo, así que se conectan entre sí.
           </p>
         </div>
         <ul className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
