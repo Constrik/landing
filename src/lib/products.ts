@@ -25,6 +25,16 @@ export type Step = {
   description: string;
 };
 
+export type Screenshot = {
+  /** Ruta bajo /public */
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  /** false si la captura NO es del estudio de ejemplo (no lleva la nota de datos ficticios) */
+  example?: boolean;
+};
+
 export type Product = {
   /** URL slug (/<slug>) */
   slug: string;
@@ -50,6 +60,8 @@ export type Product = {
   faqs: FAQ[];
   /** Keywords para meta + indexación */
   keywords: string[];
+  /** Capturas reales del producto (estudio de ejemplo, datos ficticios). La primera va en el hero. */
+  screenshots: Screenshot[];
 };
 
 export const PRODUCTS: Product[] = [
@@ -62,13 +74,13 @@ export const PRODUCTS: Product[] = [
     tagline:
       "Agente de IA que toma tu BC3, asigna oficios, estima precios con tu histórico y prepara la comparativa de subcontratas. Tu jefe de estudios pasa de copiar y pegar a decidir.",
     description:
-      "Constrik automatiza el ciclo completo de costes directos en licitaciones: ingesta de BC3, asignación de oficios por IA, estimación de precios con histórico propio y BDDs públicas, y comparativa automática de ofertas de subcontratas.",
+      "Constrik automatiza el ciclo completo de costes directos en licitaciones: lectura del BC3, asignación de oficios por IA, estimación de precios con histórico propio y BDDs públicas, y comparativa automática de ofertas de subcontratas.",
     audience: "Jefes de estudios, presupuestadores y dirección de estudios en constructoras",
     features: [
       {
-        title: "Ingesta BC3 sin pérdida",
+        title: "Lectura del BC3 sin pérdida",
         description:
-          "Parser BC3 propio que conserva mediciones detalladas, pliegos y descripciones largas. Tolerante a archivos mal formados.",
+          "Lector de BC3 propio que conserva mediciones detalladas, pliegos y descripciones largas. Tolera archivos mal formados.",
       },
       {
         title: "Asignación de oficios por IA",
@@ -78,20 +90,20 @@ export const PRODUCTS: Product[] = [
       {
         title: "Estimación con tu histórico",
         description:
-          "El motor CIE compara cada partida con clusters semánticos de tus obras anteriores. Mediana ponderada con ajuste IPC y trazabilidad completa al origen.",
+          "Constrik compara cada partida con partidas equivalentes de tus obras anteriores. Precio actualizado con el IPC y trazable hasta su origen.",
       },
       {
         title: "Comparativa de ofertas automatizada",
         description:
-          "Petición a subcontratas, recepción y parsing del PDF de oferta, alineación al BC3 y comparativa visual con tu estimación previa.",
+          "Petición a subcontratas, lectura automática de las ofertas que llegan (PDF o Excel), encaje con las partidas del BC3 y comparativa con tu estimación previa.",
       },
       {
         title: "Argumentario por partida",
         description:
-          "Cada precio sugerido lleva el razonamiento detrás: cluster que ganó, referencias usadas, ajustes aplicados y nivel de confianza explícito.",
+          "Cada precio sugerido lleva el razonamiento detrás: referencias usadas, ajustes aplicados y nivel de confianza explícito.",
       },
       {
-        title: "Human-in-the-loop en cifras de dinero",
+        title: "Las cifras las valida tu equipo",
         description:
           "La IA propone, tu equipo valida. Nada se aplica al presupuesto sin que un humano lo confirme. Auditable de principio a fin.",
       },
@@ -99,11 +111,11 @@ export const PRODUCTS: Product[] = [
     howItWorks: [
       {
         title: "Sube el BC3",
-        description: "Constrik parsea el presupuesto, detecta errores de medición y prepara la jerarquía de capítulos y partidas.",
+        description: "En segundos, Constrik lee el presupuesto, detecta errores de medición y prepara la jerarquía de capítulos y partidas.",
       },
       {
         title: "IA propone oficios y precios",
-        description: "En paralelo se asigna oficio a cada partida y se estima precio contra tu histórico interno y BDDs públicas.",
+        description: "En minutos, cada partida tiene su oficio y un precio estimado contra tu histórico y las bases de precios públicas.",
       },
       {
         title: "Tu equipo revisa y aprueba",
@@ -123,7 +135,7 @@ export const PRODUCTS: Product[] = [
       {
         question: "¿De dónde salen los precios?",
         answer:
-          "Primero buscamos en tu histórico propio (obras ganadas y presupuestadas indexadas en el motor). Si no hay match, contrastamos con BDDs públicas españolas (Andalucía, Extremadura, etc.). Como último recurso, la IA propone un rango orientativo marcado como tal.",
+          "Primero buscamos en tu histórico propio (obras ganadas y presupuestadas). Si no hay coincidencia, contrastamos con BDDs públicas españolas (Andalucía, Extremadura, etc.). Como último recurso, la IA propone un rango orientativo marcado como tal.",
       },
       {
         question: "¿Mi histórico se mezcla con el de otras constructoras?",
@@ -143,6 +155,20 @@ export const PRODUCTS: Product[] = [
       "comparativa subcontratas",
       "asignación de oficios automática",
     ],
+    screenshots: [
+      {
+        src: "/img/producto/licitacion-costes.jpg",
+        alt: "Costes directos de un estudio agrupados por oficio, con el origen de cada precio",
+        width: 1486,
+        height: 696,
+      },
+      {
+        src: "/img/producto/licitacion-ofertas.jpg",
+        alt: "Petición de oferta a subcontratas generada desde el comparativo de un oficio",
+        width: 1486,
+        height: 696,
+      },
+    ],
   },
   {
     slug: "memoria",
@@ -151,25 +177,25 @@ export const PRODUCTS: Product[] = [
     category: "Conocimiento",
     headline: "Tu histórico de precios, vivo y buscable",
     tagline:
-      "Una base de datos viva de tus presupuestos y contratos firmados, indexada por embeddings y conectada por similitud semántica. Pregúntale qué pagaste por algo y te lo cuenta.",
+      "Una base de datos viva de tus presupuestos y contratos firmados. Encuentra partidas equivalentes aunque estén descritas de otra forma: pregúntale qué pagaste por algo y te lo cuenta.",
     description:
-      "Constrik transforma tus BC3 históricos y contratos firmados en una base de conocimiento estructurada, con búsqueda semántica, grafo de partidas similares y trazabilidad completa al proyecto de origen.",
+      "Constrik transforma tus BC3 históricos y contratos firmados en una base de conocimiento estructurada, con búsqueda por significado, mapa de partidas similares y trazabilidad completa al proyecto de origen.",
     audience: "Direcciones de estudios y de compras de constructoras",
     features: [
       {
-        title: "Indexación automática al ganar obra",
+        title: "Se alimenta solo al ganar obra",
         description:
-          "Cada vez que una obra pasa a ganada, el BC3 se indexa solo. Sin trabajo manual, sin formularios.",
+          "Cada vez que una obra pasa a ganada, su BC3 se incorpora al histórico. Sin trabajo manual, sin formularios.",
       },
       {
         title: "Búsqueda por significado",
         description:
-          "Embeddings semánticos sobre cada partida: encuentra '«mortero M-5»' aunque la hayas guardado como '«mortero de agarre cemento 1:6»'.",
+          "Busca por lo que la partida es, no por cómo está escrita: encuentra '«mortero M-5»' aunque la hayas guardado como '«mortero de agarre cemento 1:6»'.",
       },
       {
-        title: "Grafo de partidas similares",
+        title: "Mapa de partidas similares",
         description:
-          "Visualiza el universo de tus precios como una red: nodos por familia, aristas por similitud. Detecta dispersión y outliers de un vistazo.",
+          "Visualiza tus precios como una red de partidas emparentadas. Detecta de un vistazo la dispersión y los precios que se salen de lo normal.",
       },
       {
         title: "Trazabilidad al proyecto original",
@@ -179,7 +205,7 @@ export const PRODUCTS: Product[] = [
       {
         title: "Ajuste IPC automático",
         description:
-          "Cuando reutilizas un precio histórico, el motor aplica un factor de actualización temporal y lo deja registrado en el log de ajustes.",
+          "Cuando reutilizas un precio histórico, Constrik lo actualiza a fecha de hoy y deja registrado el ajuste aplicado.",
       },
     ],
     howItWorks: [
@@ -188,16 +214,16 @@ export const PRODUCTS: Product[] = [
         description: "Por interfaz o conectándolos a tu Presto. También puedes empezar de cero y dejar que el histórico se llene a medida que ganas obras.",
       },
       {
-        title: "Indexación con embeddings",
-        description: "Cada partida se convierte en un vector de 1024 dimensiones que captura su significado, no solo sus palabras.",
+        title: "Constrik entiende cada partida",
+        description: "Cada partida se analiza por su significado, no solo por sus palabras.",
       },
       {
-        title: "Clusterización semántica",
+        title: "Agrupa las equivalentes",
         description: "Partidas equivalentes (con vocabularios distintos) se agrupan automáticamente y dan precio medio + dispersión + tendencia temporal.",
       },
       {
         title: "Consulta cuando lo necesites",
-        description: "Búsqueda libre, navegación por grafo o llamada desde el módulo de Licitación al estimar un nuevo presupuesto.",
+        description: "Búsqueda libre, navegación por el mapa de partidas o consulta directa desde Licitaciones al estimar un nuevo presupuesto.",
       },
     ],
     faqs: [
@@ -209,20 +235,28 @@ export const PRODUCTS: Product[] = [
       {
         question: "¿Cuántas obras hacen falta para que sea útil?",
         answer:
-          "Desde la primera. Pero la utilidad crece de forma no lineal: con 10 obras indexadas ya tienes match en partidas comunes; con 50 cubres el grueso del catálogo de capítulos.",
+          "Desde la primera. Pero la utilidad crece de forma no lineal: con 10 obras cargadas ya encuentras referencias en las partidas comunes; con 50 cubres el grueso del catálogo de capítulos.",
       },
       {
         question: "¿Puedo usar BBDDs públicas para complementar?",
         answer:
-          "Sí. El motor se integra con BDDs oficiales (Andalucía, Extremadura, etc.) marcando esas referencias como externas. Nunca se mezclan con tu histórico propio.",
+          "Sí. Constrik se integra con bases de precios oficiales (Andalucía, Extremadura, etc.) marcando esas referencias como externas. Nunca se mezclan con tu histórico propio.",
       },
     ],
     keywords: [
       "base de datos precios construcción",
       "histórico BC3",
-      "búsqueda semántica precios",
-      "grafo de precios obras",
+      "buscador de precios construcción",
+      "histórico de precios obras",
       "BBDD constructora",
+    ],
+    screenshots: [
+      {
+        src: "/img/producto/precios-referencias.jpg",
+        alt: "Rango de precio de una partida con las referencias de las que sale",
+        width: 1486,
+        height: 696,
+      },
     ],
   },
   {
@@ -232,78 +266,86 @@ export const PRODUCTS: Product[] = [
     category: "BIM",
     headline: "Detección de interferencias IFC sin falsos positivos",
     tagline:
-      "Comparación geométrica real entre disciplinas IFC con mesh-clash FCL. De cada 100 colisiones que detecta, más de 95 son reales.",
+      "Comparación geométrica real entre las disciplinas del modelo IFC. De cada 100 colisiones que detecta, más de 95 son reales.",
     description:
-      "Constrik combina ifcOpenShell + FCL mesh-clash para detectar interferencias geométricas reales entre disciplinas IFC. El uniform grid 3D filtra candidatos y la comprobación malla a malla descarta los falsos positivos típicos del clash AABB-only.",
+      "Constrik detecta interferencias geométricas reales entre las disciplinas del modelo IFC. Compara la forma exacta de cada elemento, no su caja envolvente, y descarta los falsos positivos habituales.",
     audience: "Jefes de obra, BIM managers y coordinadores de instalaciones",
     features: [
       {
-        title: "Mesh-clash real, no bounding boxes",
+        title: "Geometría real, no cajas envolventes",
         description:
-          "Comparamos las mallas triangulares de cada elemento, no su caja envolvente. Una tubería paralela a un muro a 30 cm ya no aparece como colisión.",
+          "Comparamos la forma exacta de cada elemento, no su caja envolvente. Una tubería paralela a un muro a 30 cm ya no aparece como colisión.",
       },
       {
-        title: "Severidad por ratio de solape",
+        title: "Ordenadas por gravedad",
         description:
-          "Cada clash se ordena por overlap_ratio = solape / min(volumen_a, volumen_b). Los críticos suben arriba, los rozamientos quedan abajo.",
+          "Cada interferencia se ordena según cuánto se solapan los elementos. Las críticas suben arriba, los roces quedan abajo.",
       },
       {
-        title: "Bucketing por cota Z",
+        title: "Plantas reconciliadas por cota",
         description:
-          "Cuando estructura y MEP usan nombres de planta distintos («EST-P0» vs «MM+8000»), el clash detector los reconcilia por su cota real.",
+          "Cuando estructura e instalaciones usan nombres de planta distintos («EST-P0» vs «MM+8000»), Constrik los empareja por su cota real.",
       },
       {
         title: "Filtro de elementos lineales",
         description:
-          "Tuberías y conductos largos con AABB enorme ya no generan clashes falsos contra muros paralelos. Filtrado automático por aspect ratio.",
+          "Tuberías y conductos largos ya no generan colisiones falsas contra muros paralelos. Se filtran automáticamente.",
       },
       {
         title: "Visor 3D integrado",
         description:
-          "Cada clash se localiza en el modelo con un clic: cámara enfocada en el conflicto, elementos involucrados resaltados, resto del modelo atenuado.",
+          "Cada interferencia se localiza en el modelo con un clic: cámara enfocada en el conflicto, elementos involucrados resaltados, resto del modelo atenuado.",
       },
     ],
     howItWorks: [
       {
         title: "Sube los IFC por disciplina",
-        description: "Estructura, arquitectura y MEP en archivos separados o consolidado. Constrik los unifica en un modelo único.",
+        description: "Estructura, arquitectura e instalaciones, en archivos separados o en uno solo. Constrik los unifica en un modelo único.",
       },
       {
-        title: "Broad phase con grid 3D",
-        description: "Uniform 3D grid de celdas de 2 m reduce los O(N²) pares a O(N) candidatos antes de comparar geometrías.",
+        title: "Primer filtro por proximidad",
+        description: "Constrik descarta primero los elementos que están lejos entre sí, para comparar solo los que pueden chocar.",
       },
       {
-        title: "Narrow phase con FCL",
-        description: "FCL hace mesh-to-mesh real sobre los candidatos. Confirmed vs candidate_aabb te dice cuáles son colisión geométrica probada.",
+        title: "Comprobación geométrica exacta",
+        description: "Sobre los candidatos se compara la forma real de cada elemento. Ves cuáles son colisión confirmada y cuáles solo cercanía.",
       },
       {
         title: "Revisa por severidad",
-        description: "Lista priorizada de clashes con cota Z, volumen y ratio. Mostrar/ocultar en el visor con un clic.",
+        description: "Lista priorizada de interferencias con su planta, cota y solape. Mostrar/ocultar en el visor con un clic.",
       },
     ],
     faqs: [
       {
         question: "¿Cuántos falsos positivos da?",
         answer:
-          "Sobre un dataset real de 547.000 pares candidatos producimos 14.000 clashes AABB, de los cuales 710 son confirmados por FCL. Es decir, menos del 5 % de falsos positivos contra el clash AABB-only tradicional.",
+          "En un modelo real, la detección tradicional por cajas envolventes daba 14.000 colisiones. Con la comprobación geométrica exacta quedaron 710 confirmadas: el resto eran falsos positivos.",
       },
       {
         question: "¿Qué archivos IFC funcionan?",
         answer:
-          "IFC 2x3 e IFC4 (la mayoría de IFCs reales). Para modelos con elementos rotados respecto al norte, usamos coordenadas mundo para que el AABB siga siendo válido.",
+          "IFC 2x3 e IFC4 (la mayoría de IFCs reales). Para modelos con elementos rotados respecto al norte, la detección sigue siendo válida.",
       },
       {
         question: "¿Se ejecuta en mi máquina o en la nube?",
         answer:
-          "En la nube. Subes el IFC, lanzas el job y polleas el estado. Un modelo de 16.500 elementos se procesa en ±5-7 minutos.",
+          "En la nube. Subes el IFC, lanzas el análisis y sigues trabajando mientras termina.",
       },
     ],
     keywords: [
       "detección interferencias IFC",
       "clash detection BIM",
-      "FCL mesh clash",
+      "colisiones BIM",
       "coordinación BIM construcción",
       "colisiones IFC instalaciones estructura",
+    ],
+    screenshots: [
+      {
+        src: "/img/producto/interferencias-visor.jpg",
+        alt: "Visor 3D enfocado en una interferencia entre estructura e instalaciones",
+        width: 1486,
+        height: 696,
+      },
     ],
   },
   {
@@ -315,7 +357,7 @@ export const PRODUCTS: Product[] = [
     tagline:
       "Sube el PDF de planos. Constrik clasifica cada página, detecta la escala, te deja medir con el ratón y extrae los datos estructurados que necesitas para presupuestar.",
     description:
-      "Constrik combina Claude Vision con un visor PDF interactivo para clasificar páginas de proyecto (planta, sección, cuadro de pilares…), proponer escala automática y permitir medición a escala real desde el navegador.",
+      "Constrik combina lectura de planos por IA con un visor PDF interactivo para clasificar páginas de proyecto (planta, sección, cuadro de pilares…), proponer escala automática y permitir medición a escala real desde el navegador.",
     audience: "Jefes de obra, jefes de estudios y BIM managers que trabajan con planos PDF",
     features: [
       {
@@ -326,12 +368,12 @@ export const PRODUCTS: Product[] = [
       {
         title: "Detección de escala por IA",
         description:
-          "Haiku Vision lee el cajetín y propone la escala (1:50, 1:100…). Cuando no la encuentra, no inventa: pide confirmación humana.",
+          "La IA lee el cajetín y propone la escala (1:50, 1:100…). Cuando no la encuentra, no inventa: pide confirmación humana.",
       },
       {
         title: "Calibración con verificación humana",
         description:
-          "Picas dos puntos del plano, introduces la cota real y queda calibrado. Toda calibración exige validación humana, las sugerencias IA quedan en ámbar.",
+          "Marcas dos puntos del plano, introduces la cota real y queda calibrado. Toda calibración exige validación humana, las sugerencias IA quedan en ámbar.",
       },
       {
         title: "Medición a escala real",
@@ -341,7 +383,7 @@ export const PRODUCTS: Product[] = [
       {
         title: "Extracción de tablas estructurales",
         description:
-          "Cuadros de pilares: Sonnet Vision lee filas {pilar, planta, sección, material} y las exporta estructuradas para cruzar con el BC3 y el IFC.",
+          "Cuadros de pilares: la IA lee cada fila (pilar, planta, sección, material) y la deja en una tabla lista para cruzar con el BC3 y el IFC.",
       },
     ],
     howItWorks: [
@@ -355,7 +397,7 @@ export const PRODUCTS: Product[] = [
       },
       {
         title: "Mide o extrae",
-        description: "Lightbox interactivo con tres modos: mover, calibrar, medir. Toolbar siempre visible.",
+        description: "Visor interactivo con tres modos: mover, calibrar y medir.",
       },
       {
         title: "Conecta con tu BC3",
@@ -366,17 +408,12 @@ export const PRODUCTS: Product[] = [
       {
         question: "¿Y si el plano no tiene cajetín visible o la escala no aparece?",
         answer:
-          "La IA prefiere decir «no lo sé» antes que inventar. En ese caso te muestra que no hay sugerencia y calibras manualmente picando dos puntos y dando la cota real.",
+          "La IA prefiere decir «no lo sé» antes que inventar. En ese caso te muestra que no hay sugerencia y calibras manualmente marcando dos puntos y dando la cota real.",
       },
       {
         question: "¿Funciona con planos escaneados o solo nativos?",
         answer:
           "Funciona con ambos. Para escaneos, la calidad de la calibración depende de que se vea bien una cota o referencia métrica conocida.",
-      },
-      {
-        question: "¿Cuánto cuesta procesar un PDF?",
-        answer:
-          "La clasificación cuesta unos pocos céntimos por página (Haiku Vision). La extracción de tablas, solo sobre las páginas que la requieren. Para un proyecto medio (40-60 páginas), suele rondar 1 €.",
       },
     ],
     keywords: [
@@ -384,7 +421,15 @@ export const PRODUCTS: Product[] = [
       "calibración escala plano",
       "medición sobre plano",
       "extracción cuadro de pilares",
-      "Claude Vision construcción",
+      "análisis de planos con IA",
+    ],
+    screenshots: [
+      {
+        src: "/img/producto/planos-clasificados.jpg",
+        alt: "Páginas de los planos del proyecto clasificadas por tipo",
+        width: 1502,
+        height: 712,
+      },
     ],
   },
   {
@@ -394,9 +439,9 @@ export const PRODUCTS: Product[] = [
     category: "Obra",
     headline: "Planning y costes indirectos que se ajustan solos",
     tagline:
-      "Planning por oficios con reglas de precedencia y estimador de costes indirectos por IA. El cronograma y el GG/BI no son hojas Excel paralelas — viven el uno del otro.",
+      "Planning por oficios con reglas de precedencia y estimador de costes indirectos. El cronograma y el GG/BI no son hojas Excel paralelas — viven el uno del otro.",
     description:
-      "Constrik combina un planificador por oficios con reglas de precedencia configurables y un estimador de costes indirectos basado en IA, todo conectado al BC3 de la obra para que cualquier cambio se refleje en ambos lados.",
+      "Constrik combina un planificador por oficios con reglas de precedencia configurables y un estimador de costes indirectos, todo conectado al BC3 de la obra para que cualquier cambio se refleje en ambos lados.",
     audience: "Jefes de obra, planificadores y direcciones de producción",
     features: [
       {
@@ -405,9 +450,9 @@ export const PRODUCTS: Product[] = [
           "El Gantt se construye al nivel de detalle que usa la obra: oficios y zonas, con reglas de precedencia configurables por constructora.",
       },
       {
-        title: "Estimación IA de costes indirectos",
+        title: "Estimación de costes indirectos",
         description:
-          "Sonnet 4 con tu base de conocimiento estima personal de obra, instalaciones, ensayos y legalizaciones según el tipo y tamaño del proyecto.",
+          "Constrik estima personal de obra, instalaciones, ensayos y legalizaciones con las reglas y tarifas de tu constructora, según el tipo, tamaño y plazo del proyecto.",
       },
       {
         title: "Conexión bidireccional con el BC3",
@@ -436,11 +481,11 @@ export const PRODUCTS: Product[] = [
       },
       {
         title: "Genera el cronograma",
-        description: "Plan propone una secuencia inicial respetando las reglas. Tú ajustas semanas y zonas con clics.",
+        description: "Constrik propone en segundos una secuencia inicial respetando las reglas. Tú ajustas semanas y zonas con clics.",
       },
       {
         title: "Estima los indirectos",
-        description: "La IA propone GG/BI desglosados con argumentario por línea. Tú ajustas y validas.",
+        description: "Constrik propone los indirectos desglosados, con la regla aplicada en cada línea. Tú ajustas y validas.",
       },
     ],
     faqs: [
@@ -450,9 +495,9 @@ export const PRODUCTS: Product[] = [
           "Constrik exporta CSV y XML para que tu equipo lo abra en MS Project si lo necesita. La planificación se hace dentro de Constrik para que sea coherente con presupuesto y obra.",
       },
       {
-        question: "¿Cómo estima los costes indirectos la IA?",
+        question: "¿Cómo se estiman los costes indirectos?",
         answer:
-          "Cruza características de la obra (tipología, m², duración, ubicación) con la base de conocimiento de tu constructora. El argumentario explica qué supuso para cada partida.",
+          "Cruza características de la obra (tipología, m², duración, ubicación) con la base de conocimiento de tu constructora. Cada línea indica qué regla y qué tarifa se han aplicado.",
       },
       {
         question: "¿Puedo arrancar sin tener histórico cargado?",
@@ -467,6 +512,20 @@ export const PRODUCTS: Product[] = [
       "GG BI construcción",
       "planificador obra constructora",
     ],
+    screenshots: [
+      {
+        src: "/img/producto/planificacion-planning.jpg",
+        alt: "Planning de obra por zonas y oficios, semana a semana",
+        width: 1486,
+        height: 696,
+      },
+      {
+        src: "/img/producto/planificacion-indirectos.jpg",
+        alt: "Costes indirectos de la obra desglosados por concepto, con la regla aplicada",
+        width: 1486,
+        height: 696,
+      },
+    ],
   },
   {
     slug: "oficios",
@@ -477,23 +536,23 @@ export const PRODUCTS: Product[] = [
     tagline:
       "Cada partida del presupuesto mapeada al oficio que la ejecuta, con catálogo propio por constructora y asignación automática por IA. Listo para pedir ofertas.",
     description:
-      "Constrik clasifica automáticamente cada partida del BC3 al oficio responsable, usando un catálogo de oficios per-organización y Sonnet 4 sobre el conocimiento de tu constructora.",
+      "Constrik clasifica automáticamente cada partida del BC3 al oficio responsable, usando el catálogo de oficios y el conocimiento propio de tu constructora.",
     audience: "Jefes de estudios, departamento de compras y dirección de subcontratación",
     features: [
       {
         title: "Catálogo de oficios propio",
         description:
-          "26 oficios pre-cargados de construcción española. Los renombras, agrupas o amplías según cómo trabaje tu constructora.",
+          "Catálogo de oficios de construcción española pre-cargado. Los renombras, agrupas o amplías según cómo trabaje tu constructora.",
       },
       {
-        title: "Auto-asignación por IA",
+        title: "Asignación automática por IA",
         description:
-          "Sonnet 4 lee descripción, código y unidad de cada partida y la mapea al oficio. Procesa lotes de 200 partidas en paralelo.",
+          "La IA lee descripción, código y unidad de cada partida y le asigna su oficio. Un presupuesto entero, en minutos.",
       },
       {
         title: "Base de conocimiento por categoría",
         description:
-          "Reglas específicas de tu constructora: «las ayudas a fontanería las hace albañilería», «el sellado de juntas lo hace pintura». Se inyecta en el prompt.",
+          "Reglas específicas de tu constructora: «las ayudas a fontanería las hace albañilería», «el sellado de juntas lo hace pintura». La IA las aplica en cada asignación.",
       },
       {
         title: "Tabla de validación rápida",
@@ -501,19 +560,19 @@ export const PRODUCTS: Product[] = [
           "Vista tabla con la asignación propuesta. Cambias en bloque las que estén mal con menú contextual. Sin abrir partida a partida.",
       },
       {
-        title: "Resultados persistentes e incrementales",
+        title: "No se pierde el trabajo hecho",
         description:
-          "Si la IA falla a mitad o cancelas, lo procesado queda guardado. Re-ejecutar empieza de cero limpio sin estados intermedios.",
+          "Si cancelas a mitad, lo procesado queda guardado. Y tus ajustes manuales no se tocan al volver a analizar.",
       },
     ],
     howItWorks: [
       {
         title: "Sube el BC3",
-        description: "Constrik parsea y prepara la jerarquía capítulo > subcapítulo > partida.",
+        description: "Constrik lo lee y prepara la jerarquía capítulo > subcapítulo > partida.",
       },
       {
-        title: "Lanza auto-asignación",
-        description: "Por defecto 3 lotes en paralelo, 200 partidas por lote. Un BC3 de 5.000 líneas tarda ±5 minutos.",
+        title: "Lanza la asignación automática",
+        description: "Un BC3 de 5.000 líneas tarda unos 5 minutos.",
       },
       {
         title: "Revisa la propuesta",
@@ -528,7 +587,7 @@ export const PRODUCTS: Product[] = [
       {
         question: "¿Tengo que definir oficios desde cero?",
         answer:
-          "No. Cada organización arranca con 26 oficios pre-cargados (albañilería, electricidad, fontanería, climatización, carpintería, etc.). Los renombras, agrupas o eliminas según trabajes.",
+          "No. Cada constructora arranca con un catálogo pre-cargado (albañilería, electricidad, fontanería, climatización, carpintería, etc.). Los renombras, agrupas o eliminas según trabajes.",
       },
       {
         question: "¿Cómo afina la IA al estilo de mi constructora?",
@@ -546,7 +605,21 @@ export const PRODUCTS: Product[] = [
       "clasificación partidas presupuesto",
       "catálogo oficios constructora",
       "IA presupuesto construcción",
-      "auto-assign oficios",
+      "asignación automática de oficios",
+    ],
+    screenshots: [
+      {
+        src: "/img/producto/oficios-asignacion.jpg",
+        alt: "Partidas del presupuesto asignadas a oficios",
+        width: 1486,
+        height: 696,
+      },
+      {
+        src: "/img/producto/oficios-descompuestos.jpg",
+        alt: "Descompuestos de una partida, línea a línea",
+        width: 1502,
+        height: 646,
+      },
     ],
   },
   {
@@ -558,28 +631,28 @@ export const PRODUCTS: Product[] = [
     tagline:
       "Auditoría por reglas y por IA sobre el BC3, y triangulación cruzada entre presupuesto, modelo IFC y planos PDF. Lo que falta o no encaja, salta a la vista.",
     description:
-      "Constrik combina siete comprobaciones automáticas sobre el BC3, una auditoría IA por capítulos en ocho dimensiones (ejecutar, coordinar, proteger, legalizar, ensayar, montar, desmontar, entregar) y un reconciliador que detecta gaps entre el presupuesto, el modelo IFC y los planos PDF.",
+      "Constrik combina siete comprobaciones automáticas sobre el BC3, una auditoría IA por capítulos en ocho dimensiones (ejecutar, coordinar, proteger, legalizar, ensayar, montar, desmontar, entregar) y un cruce que detecta lo que no cuadra entre el presupuesto, el modelo IFC y los planos PDF.",
     audience: "Jefes de estudios, jefes de obra y dirección de calidad",
     features: [
       {
         title: "7 comprobaciones automáticas del BC3",
         description:
-          "Mediciones a cero, unidades mal informadas, descripciones vacías, capítulos huérfanos, líneas de medición ausentes. Reglas deterministas, coste 0.",
+          "Mediciones a cero, unidades mal informadas, descripciones vacías, capítulos huérfanos, líneas de medición ausentes. Resultado inmediato.",
       },
       {
         title: "Auditoría IA por capítulos",
         description:
-          "Sonnet 4 audita el BC3 capítulo a capítulo en 8 dimensiones. Detecta partidas faltantes que las reglas no pueden ver.",
+          "La IA audita el BC3 capítulo a capítulo en 8 dimensiones. Detecta partidas faltantes que las reglas no pueden ver.",
       },
       {
         title: "Triangulación BC3 ↔ IFC ↔ Planos",
         description:
-          "El reconciliador agrupa entidades por (tipo, material, sección) y detecta lo que está en una fuente y falta en otra.",
+          "Constrik agrupa los elementos por tipo, material y sección, y detecta lo que está en una fuente y falta en otra.",
       },
       {
         title: "Hallazgos accionables, no avisos genéricos",
         description:
-          "Cada finding lleva capítulo, severidad, atributos comparados y deeplink al plano o al elemento IFC concreto.",
+          "Cada hallazgo lleva capítulo, gravedad, datos comparados y enlace directo al plano o al elemento del modelo.",
       },
       {
         title: "Re-auditoría incremental",
@@ -590,36 +663,36 @@ export const PRODUCTS: Product[] = [
     howItWorks: [
       {
         title: "Lanza las reglas",
-        description: "Comprobaciones deterministas sobre el BC3. Coste 0. Resultado en segundos.",
+        description: "Comprobaciones automáticas sobre el BC3. Resultado en segundos.",
       },
       {
         title: "Audita con IA por capítulos",
-        description: "Sonnet 4 procesa cada capítulo en paralelo (max 3 llamadas simultáneas) buscando lo que falta en las 8 dimensiones.",
+        description: "La IA revisa cada capítulo buscando lo que falta en las 8 dimensiones.",
       },
       {
         title: "Triangula con IFC y planos",
-        description: "Si has subido IFC y/o planos PDF, el reconciliador detecta divergencias y gaps cross-source.",
+        description: "Si has subido IFC y/o planos PDF, Constrik detecta lo que no coincide entre ellas.",
       },
       {
         title: "Revisa los hallazgos",
-        description: "Lista priorizada por severidad con justificación, atributos comparados y enlace al elemento concreto.",
+        description: "Lista priorizada por gravedad con justificación, datos comparados y enlace al elemento concreto.",
       },
     ],
     faqs: [
       {
         question: "¿Y si solo tengo BC3, sin IFC ni planos?",
         answer:
-          "Constrik funciona igual con solo BC3: 7 reglas + auditoría IA por capítulos. La triangulación cross-source se activa solo cuando hay más de una fuente.",
+          "Constrik funciona igual con solo BC3: 7 reglas + auditoría IA por capítulos. La triangulación se activa cuando hay más de una fuente.",
       },
       {
-        question: "¿Cuánto cuesta una auditoría IA completa?",
+        question: "¿Cuánto tarda una auditoría completa?",
         answer:
-          "Para un BC3 medio (10-15 capítulos) está por debajo de 1 € en coste de modelo. La parte de reglas es gratis siempre.",
+          "Segundos. Tanto las comprobaciones automáticas como la auditoría por IA de un BC3 medio (10-15 capítulos).",
       },
       {
         question: "¿Reconoce errores típicos del FIEBDC?",
         answer:
-          "Sí. Las 7 reglas incluyen unit_mismatch, zero_quantity, missing_mandatory, duplicate, empty_chapter, no_description y no_measurement_lines, alineadas con los errores que más se repiten en BC3 reales.",
+          "Sí. Las 7 reglas cubren unidades incoherentes, mediciones a cero, campos obligatorios vacíos, partidas duplicadas, capítulos vacíos, partidas sin descripción y partidas sin líneas de medición: los errores que más se repiten en BC3 reales.",
       },
     ],
     keywords: [
@@ -628,6 +701,21 @@ export const PRODUCTS: Product[] = [
       "triangulación BIM presupuesto",
       "detector errores BC3",
       "reconciliación IFC presupuesto",
+    ],
+    screenshots: [
+      {
+        src: "/img/producto/auditoria-hallazgos.jpg",
+        alt: "Auditoría del presupuesto: incidencias priorizadas y mediciones que no cuadran",
+        width: 1500,
+        height: 704,
+        example: false,
+      },
+      {
+        src: "/img/producto/auditoria-presupuesto.jpg",
+        alt: "Presupuesto BC3 leído por capítulos y partidas",
+        width: 1486,
+        height: 696,
+      },
     ],
   },
 ];

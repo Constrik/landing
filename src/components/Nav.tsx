@@ -33,7 +33,7 @@ export function Nav({ t }: { t: Tweaks }) {
             rel="noopener"
             className="hover:text-slate-900"
           >
-            Preguntas
+            Contacto
           </a>
         </nav>
         <div className="ml-auto flex items-center gap-3">
@@ -46,7 +46,7 @@ export function Nav({ t }: { t: Tweaks }) {
             </a>
           )}
           <CtaButton variant="primary" size="sm" href={t.bookingUrl} target="_blank">
-            Pedir demo
+            Pedir una demo
           </CtaButton>
         </div>
       </div>

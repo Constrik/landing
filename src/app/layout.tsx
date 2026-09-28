@@ -149,11 +149,11 @@ const jsonLd = {
           "@type": "UnitPriceSpecification",
           price: "250",
           priceCurrency: "EUR",
-          unitText: "obra activa al mes",
+          unitText: "estudio",
           referenceQuantity: {
             "@type": "QuantitativeValue",
             value: "1",
-            unitText: "obra/mes",
+            unitText: "estudio",
           },
         },
       },

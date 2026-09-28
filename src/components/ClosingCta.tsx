@@ -14,7 +14,7 @@ export function ClosingCta({ t }: { t: Tweaks }) {
         </p>
         <div className="mt-9 flex items-center justify-center gap-3 flex-wrap">
           <CtaButton variant="primary" size="lg" href={t.bookingUrl} target="_blank">
-            Agendar una demo
+            Pedir una demo
           </CtaButton>
           <CtaButton
             variant="ghost"

@@ -7,6 +7,7 @@ import { Nav } from "@/components/Nav";
 import { ProductFaqs } from "@/components/ProductFaqs";
 import { ProductFeatures } from "@/components/ProductFeatures";
 import { ProductHero } from "@/components/ProductHero";
+import { ProductScreenshot } from "@/components/ProductScreenshot";
 import { ProductHowItWorks } from "@/components/ProductHowItWorks";
 import { getAllSlugs, getProductBySlug } from "@/lib/products";
 import { PROD_TWEAKS } from "@/lib/tweaks";
@@ -117,7 +118,7 @@ export default async function ProductPage({
             "@type": "UnitPriceSpecification",
             price: "250",
             priceCurrency: "EUR",
-            unitText: "obra activa al mes",
+            unitText: "estudio",
           },
         },
       },
@@ -142,6 +143,13 @@ export default async function ProductPage({
       <main>
         <ProductHero product={product} t={t} />
         <ProductFeatures features={product.features} />
+        {product.screenshots[1] && (
+          <section className="bg-white">
+            <div className="max-w-6xl mx-auto px-6 lg:px-8 pt-20">
+              <ProductScreenshot shot={product.screenshots[1]} />
+            </div>
+          </section>
+        )}
         <ProductHowItWorks steps={product.howItWorks} />
         <ProductFaqs faqs={product.faqs} />
         <ClosingCta t={t} />

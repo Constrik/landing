@@ -1,11 +1,12 @@
 import { CtaButton } from "./CtaButton";
+import { ProductScreenshot } from "./ProductScreenshot";
 import type { Product } from "@/lib/products";
 import type { Tweaks } from "@/lib/tweaks";
 
 export function ProductHero({ product, t }: { product: Product; t: Tweaks }) {
   return (
     <section className="relative overflow-hidden hero-grid">
-      <div className="max-w-5xl mx-auto px-6 lg:px-8 pt-20 pb-24 text-center">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 pt-12 lg:pt-14 pb-20 text-center">
         <nav
           aria-label="Migas"
           className="inline-flex items-center gap-2 text-[12.5px] text-slate-500 mb-8"
@@ -37,6 +38,11 @@ export function ProductHero({ product, t }: { product: Product; t: Tweaks }) {
             Ver características
           </CtaButton>
         </div>
+        {product.screenshots[0] && (
+          <div className="mt-14 text-left">
+            <ProductScreenshot shot={product.screenshots[0]} priority />
+          </div>
+        )}
       </div>
     </section>
   );

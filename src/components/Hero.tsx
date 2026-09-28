@@ -1,16 +1,17 @@
 import { CtaButton } from "./CtaButton";
+import { HeroVideo } from "./HeroVideo";
 import type { Tweaks } from "@/lib/tweaks";
 
 export function Hero({ t }: { t: Tweaks }) {
   return (
     <section className="relative overflow-hidden hero-grid">
-      <div className="max-w-5xl mx-auto px-6 lg:px-8 pt-24 pb-28 text-center">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-200 bg-white text-[11.5px] text-slate-500 mb-8">
+      <div className="max-w-5xl mx-auto px-6 lg:px-8 pt-12 lg:pt-14 pb-20 text-center">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-200 bg-white text-[11.5px] text-slate-500 mb-6">
           <span className="w-1.5 h-1.5 rounded-full bg-[#00CED1]" aria-hidden />
           IA para los departamentos de estudios
         </div>
-        <h1 className="font-logo font-bold tracking-tight text-[#1A1A2E] text-[clamp(40px,7vw,84px)] leading-[1.02]">
-          Presupuesta como si{" "}
+        <h1 className="font-logo font-bold tracking-tight text-[#1A1A2E] text-[clamp(36px,5.6vw,64px)] leading-[1.05]">
+          Presupuesta como si <br className="hidden md:block" />
           <span className="accent-underline">ya hubieras hecho la obra</span>.
         </h1>
         <p className="mt-7 text-lg lg:text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
@@ -27,9 +28,10 @@ export function Hero({ t }: { t: Tweaks }) {
             Ver cómo funciona
           </CtaButton>
         </div>
-        <p className="mt-5 text-xs text-slate-400">
+        <p className="mt-5 text-xs text-slate-500">
           Sube tu BC3, IFC y PDF de planos y la IA comenzará a trabajar por ti.
         </p>
+        <HeroVideo />
       </div>
     </section>
   );

@@ -30,8 +30,8 @@ export default function PrivacidadPage() {
             </h2>
             <ul className="mt-2 space-y-1">
               <li>
-                <strong>Responsable:</strong> Constrik Intelligence SL (en
-                constitución) — NIF B88773114
+                <strong>Responsable:</strong> Constrik Intelligence, S.L. —
+                NIF B88773114
               </li>
               <li>
                 <strong>Domicilio:</strong> Passeig Garbí 132, 08860

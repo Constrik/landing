@@ -15,7 +15,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-[11.5px] uppercase tracking-[0.12em] text-slate-400 mb-3">
+            <p className="text-[11.5px] uppercase tracking-[0.12em] text-slate-500 mb-3">
               Productos · Estudios
             </p>
             <ul className="space-y-2 text-[13px] text-slate-600">
@@ -30,8 +30,8 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-[11.5px] uppercase tracking-[0.12em] text-slate-400 mb-3">
-              BIM y obra
+            <p className="text-[11.5px] uppercase tracking-[0.12em] text-slate-500 mb-3">
+              BIM, obra y datos
             </p>
             <ul className="space-y-2 text-[13px] text-slate-600">
               {PRODUCTS.filter(
@@ -54,7 +54,7 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="text-[11.5px] uppercase tracking-[0.12em] text-slate-400 mb-3">
+            <p className="text-[11.5px] uppercase tracking-[0.12em] text-slate-500 mb-3">
               Contacto
             </p>
             <ul className="space-y-2 text-[13px] text-slate-600">
@@ -93,11 +93,11 @@ export function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-slate-100 flex flex-col md:flex-row items-start md:items-center gap-2 text-[11.5px] text-slate-400">
-          <span>Constrik Intelligence SL (en constitución) · B88773114</span>
+          <span>Constrik Intelligence, S.L. · NIF B88773114</span>
           <span className="hidden md:inline">·</span>
           <span>Castelldefels (Barcelona), España</span>
           <span className="md:ml-auto">
-            © 2026 Constrik Intelligence SL. Todos los derechos reservados.
+            © 2026 Constrik Intelligence, S.L. Todos los derechos reservados.
           </span>
         </div>
       </div>

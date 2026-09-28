@@ -33,8 +33,8 @@ export default function AvisoLegalPage() {
             </p>
             <ul className="mt-3 space-y-1">
               <li>
-                <strong>Denominación social:</strong> Constrik Intelligence SL
-                (en constitución)
+                <strong>Denominación social:</strong> Constrik Intelligence,
+                S.L.
               </li>
               <li>
                 <strong>NIF:</strong> B88773114
@@ -53,7 +53,9 @@ export default function AvisoLegalPage() {
                 </a>
               </li>
               <li>
-                <strong>Datos registrales:</strong> sociedad en constitución.
+                <strong>Datos registrales:</strong> inscrita en el Registro
+                Mercantil de Barcelona, Tomo/I.R.U.S. 1000475647886, Folio 1,
+                Hoja B 659146, Inscripción 1.ª
               </li>
             </ul>
           </section>

@@ -1,13 +1,15 @@
 import { CtaButton } from "./CtaButton";
 import type { Tweaks } from "@/lib/tweaks";
 
-const PRICE_EUR_OBRA = 250;
+const PRICE_EUR_REF = 250;
 
 const FEATURES = [
-  "Estudios ilimitados",
-  "Auditoría BC3/IFC/Planos automática",
-  "Cost Intelligence Engine completo",
-  "Asignación de oficios e histórico de precios",
+  "Auditoría BC3/IFC/Planos",
+  "Generación de descompuestos y asignación de oficios",
+  "Estimación desde Base de Datos y comparativos automáticos de ofertas",
+  "Planning por actividades",
+  "Proyección de certificaciones",
+  "Propuesta a cliente",
 ];
 
 export function Pricing({ t }: { t: Tweaks }) {
@@ -21,25 +23,27 @@ export function Pricing({ t }: { t: Tweaks }) {
               Precio
             </p>
             <h2 className="font-logo font-bold text-[#1A1A2E] text-3xl lg:text-4xl tracking-tight leading-tight">
-              Un precio.
-              <br />
-              Por obra activa.
+              Cuota fija anual, según tu volumen de estudios.
             </h2>
             <p className="mt-5 text-[15px] text-slate-600 leading-relaxed max-w-md">
-              Empiezas con una sola obra. Si te aporta valor, amplías al resto.
+              Estimamos contigo los estudios que harás en el año y fijamos una
+              cuota con margen. Sabes lo que pagas desde el primer día.
             </p>
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-8 lg:p-10">
+            <p className="text-[12px] font-mono uppercase tracking-wider text-slate-500 mb-2">
+              Referencia orientativa
+            </p>
             <div className="flex items-baseline gap-2 mb-1">
               <span className="text-5xl lg:text-6xl font-bold text-[#1A1A2E] font-logo tracking-tight">
-                {PRICE_EUR_OBRA}&nbsp;€
+                ~{PRICE_EUR_REF}&nbsp;€
               </span>
-              <span className="text-slate-500 text-base">/ obra / mes</span>
+              <span className="text-slate-500 text-base">/ estudio</span>
             </div>
             <p className="text-sm text-slate-500 mb-7">
-              IVA no incluido. Facturación mensual.
+              IVA no incluido. La cuota anual se cierra en la demo.
             </p>
-            <ul className="space-y-3 text-[14.5px] text-slate-700">
+            <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3 text-[14.5px] text-slate-700">
               {FEATURES.map((line) => (
                 <li key={line} className="flex items-start gap-2.5">
                   <svg
@@ -58,12 +62,9 @@ export function Pricing({ t }: { t: Tweaks }) {
                 </li>
               ))}
             </ul>
-            <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between gap-4 flex-wrap">
-              <span className="text-xs text-slate-500">
-                Empieza con 1 obra. Si te aporta valor, amplía a todas.
-              </span>
+            <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-end">
               <CtaButton variant="primary" size="md" href={t.bookingUrl} target="_blank">
-                Activar primera obra
+                Pedir una demo
               </CtaButton>
             </div>
           </div>

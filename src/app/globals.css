@@ -17,6 +17,17 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+/* El header sticky mide 4rem: que los anclajes no queden debajo. */
+section[id] {
+  scroll-margin-top: 4rem;
+}
+
 .font-logo {
   font-family: Georgia, serif;
   letter-spacing: -0.01em;
