@@ -48,7 +48,7 @@ export function HeroVideo() {
                 <path d="M8 5v14l11-7z" />
               </svg>
             </span>
-            Ver el vídeo · 12 s
+            Ver el vídeo · 14 s
           </span>
         </button>
       )}
