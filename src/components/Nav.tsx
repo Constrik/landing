@@ -1,6 +1,7 @@
 import { CtaButton } from "./CtaButton";
 import { Logo } from "./Logo";
 import type { Tweaks } from "@/lib/tweaks";
+import { TRIAL_PATH } from "@/lib/trial";
 
 export function Nav({ t }: { t: Tweaks }) {
   return (
@@ -11,7 +12,7 @@ export function Nav({ t }: { t: Tweaks }) {
         </a>
         <nav
           aria-label="Principal"
-          className="hidden md:flex items-center gap-7 ml-12 text-[13.5px] text-slate-600 whitespace-nowrap"
+          className="hidden lg:flex items-center gap-7 ml-12 text-[13.5px] text-slate-600 whitespace-nowrap"
         >
           <a href="/#beneficios" className="hover:text-slate-900">
             Beneficios
@@ -36,7 +37,7 @@ export function Nav({ t }: { t: Tweaks }) {
             Contacto
           </a>
         </nav>
-        <div className="ml-auto flex items-center gap-3">
+        <div className="ml-auto flex items-center gap-2 sm:gap-3">
           {t.showLogin && (
             <a
               href={t.loginUrl}
@@ -45,8 +46,19 @@ export function Nav({ t }: { t: Tweaks }) {
               Iniciar sesión
             </a>
           )}
-          <CtaButton variant="primary" size="sm" href={t.bookingUrl} target="_blank">
-            Pedir una demo
+          <CtaButton variant="outline" size="sm" href={TRIAL_PATH} className="max-sm:px-3">
+            <span className="sm:hidden">Prueba gratis</span>
+            <span className="hidden sm:inline">Probar gratis con tu BC3</span>
+          </CtaButton>
+          <CtaButton
+            variant="primary"
+            size="sm"
+            href={t.bookingUrl}
+            target="_blank"
+            className="max-sm:px-3"
+          >
+            <span className="sm:hidden">Demo</span>
+            <span className="hidden sm:inline">Pedir una demo</span>
           </CtaButton>
         </div>
       </div>

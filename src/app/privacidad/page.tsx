@@ -20,7 +20,7 @@ export default function PrivacidadPage() {
           Política de privacidad
         </h1>
         <p className="mt-3 text-sm text-slate-500">
-          Última actualización: junio de 2026
+          Última actualización: octubre de 2026
         </p>
 
         <div className="mt-8 space-y-8 text-[15px] leading-relaxed text-slate-700">
@@ -61,6 +61,25 @@ export default function PrivacidadPage() {
                 gestionar la relación comercial.
               </li>
               <li>
+                <strong>Prueba gratuita con tu BC3.</strong> Si usas la prueba
+                de{" "}
+                <a href="/prueba" className="text-navy underline hover:no-underline">
+                  constrik.com/prueba
+                </a>
+                , tratamos tu correo electrónico de empresa, el fichero BC3 que
+                subes y datos técnicos de la solicitud (dirección IP y
+                navegador) para procesar el presupuesto, enviarte el resultado,
+                evitar abusos y contactarte en relación con la prueba. El
+                presupuesto se usa únicamente para generar tu resultado: no se
+                incorpora a ninguna base de precios ni se comparte. Como
+                usuario de la prueba, podremos enviarte información sobre
+                productos y servicios de Constrik similares a los que has
+                probado (art. 21.2 de la LSSI); puedes oponerte en cualquier
+                momento escribiendo a info@constrik.com o desde cualquiera de
+                nuestras comunicaciones. Para verificar que no eres un robot
+                usamos Cloudflare Turnstile.
+              </li>
+              <li>
                 <strong>Datos de navegación (analítica).</strong> Con tu
                 consentimiento, usamos Google Analytics para medir de forma
                 agregada el uso del sitio y mejorarlo. Ver la{" "}
@@ -80,7 +99,9 @@ export default function PrivacidadPage() {
             <p className="mt-2">
               La atención de tu solicitud se basa en tu consentimiento y/o en la
               aplicación de medidas precontractuales. El envío de comunicaciones
-              comerciales y la analítica web se basan en tu consentimiento. El
+              comerciales y la analítica web se basan en tu consentimiento,
+              salvo las que enviamos a usuarios de la prueba gratuita sobre
+              productos similares, que se basan en el art. 21.2 de la LSSI. El
               mantenimiento de la seguridad del sitio se basa en nuestro interés
               legítimo.
             </p>
@@ -92,6 +113,9 @@ export default function PrivacidadPage() {
               Conservamos tus datos mientras dure la relación o el interés
               mutuo y, posteriormente, durante los plazos legalmente exigibles.
               Los datos de analítica se conservan según los plazos del proveedor.
+              En la prueba gratuita, el fichero BC3 y los resultados se borran a
+              los 30 días; el correo y la constancia de tu solicitud se conservan
+              mientras haya interés comercial mutuo o hasta que te opongas.
             </p>
           </section>
 
@@ -102,7 +126,8 @@ export default function PrivacidadPage() {
             <p className="mt-2">
               No cedemos tus datos a terceros salvo obligación legal. Para
               prestar el servicio nos apoyamos en proveedores tecnológicos
-              (alojamiento del sitio y analítica), que actúan como encargados
+              (alojamiento, envío de correo, verificación anti-robots y
+              analítica), que actúan como encargados
               del tratamiento bajo contrato. Algunos pueden implicar
               transferencias internacionales de datos, en cuyo caso se realizan
               con las garantías adecuadas previstas en el RGPD (p. ej. cláusulas
