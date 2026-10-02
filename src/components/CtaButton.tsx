@@ -7,10 +7,11 @@ type CtaButtonProps = {
   size?: "sm" | "md" | "lg";
   target?: string;
   rel?: string;
+  className?: string;
 };
 
 const BASE =
-  "inline-flex items-center justify-center font-medium rounded-lg transition-colors whitespace-nowrap";
+  "inline-flex items-center justify-center font-medium rounded-lg border transition-colors whitespace-nowrap";
 
 const SIZE_CLS: Record<NonNullable<CtaButtonProps["size"]>, string> = {
   sm: "px-4 py-2 text-sm",
@@ -19,10 +20,10 @@ const SIZE_CLS: Record<NonNullable<CtaButtonProps["size"]>, string> = {
 };
 
 const VARIANT_CLS: Record<NonNullable<CtaButtonProps["variant"]>, string> = {
-  primary: "bg-slate-900 text-white hover:bg-slate-800",
-  accent: "bg-blue-600 text-white hover:bg-blue-700",
-  ghost: "text-slate-700 hover:text-slate-900",
-  outline: "border border-slate-300 text-slate-800 hover:border-slate-400 bg-white",
+  primary: "border-transparent bg-slate-900 text-white hover:bg-slate-800",
+  accent: "border-transparent bg-blue-600 text-white hover:bg-blue-700",
+  ghost: "border-transparent text-slate-700 hover:text-slate-900",
+  outline: "border-slate-300 text-slate-800 hover:border-slate-400 bg-white",
 };
 
 export function CtaButton({
@@ -32,6 +33,7 @@ export function CtaButton({
   size = "md",
   target,
   rel,
+  className = "",
 }: CtaButtonProps) {
   const safeRel = target === "_blank" ? rel ?? "noopener noreferrer" : rel;
   return (
@@ -39,7 +41,7 @@ export function CtaButton({
       href={href}
       target={target}
       rel={safeRel}
-      className={`${BASE} ${SIZE_CLS[size]} ${VARIANT_CLS[variant]}`}
+      className={`${BASE} ${SIZE_CLS[size]} ${VARIANT_CLS[variant]} ${className}`}
     >
       {children}
     </a>

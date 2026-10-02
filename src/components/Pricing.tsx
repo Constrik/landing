@@ -1,5 +1,6 @@
 import { CtaButton } from "./CtaButton";
 import type { Tweaks } from "@/lib/tweaks";
+import { TRIAL_PATH } from "@/lib/trial";
 
 const PRICE_EUR_REF = 250;
 
@@ -29,6 +30,21 @@ export function Pricing({ t }: { t: Tweaks }) {
               Estimamos contigo los estudios que harás en el año y fijamos una
               cuota con margen. Sabes lo que pagas desde el primer día.
             </p>
+            <div className="mt-8 rounded-xl border border-slate-200 bg-slate-50 p-5 max-w-md">
+              <p className="font-semibold text-slate-900 text-[15px]">
+                ¿Quieres verlo antes con tu presupuesto?
+              </p>
+              <p className="mt-1.5 text-[14px] text-slate-600 leading-relaxed">
+                Sube un BC3 y recibe gratis el BC3 con los descompuestos y el
+                Excel de costes directos con una pestaña por oficio.
+              </p>
+              <a
+                href={TRIAL_PATH}
+                className="mt-3 inline-flex items-center gap-1.5 text-[14px] font-medium text-slate-900 underline underline-offset-4 hover:no-underline"
+              >
+                Probar gratis con mi BC3 <span aria-hidden>→</span>
+              </a>
+            </div>
           </div>
           <div className="rounded-2xl border border-slate-200 bg-white p-8 lg:p-10">
             <p className="text-[12px] font-mono uppercase tracking-wider text-slate-500 mb-2">
@@ -62,7 +78,10 @@ export function Pricing({ t }: { t: Tweaks }) {
                 </li>
               ))}
             </ul>
-            <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-end">
+            <div className="mt-8 pt-6 border-t border-slate-100 flex flex-wrap items-center justify-end gap-3">
+              <CtaButton variant="outline" size="md" href={TRIAL_PATH}>
+                Probar gratis con tu BC3
+              </CtaButton>
               <CtaButton variant="primary" size="md" href={t.bookingUrl} target="_blank">
                 Pedir una demo
               </CtaButton>
