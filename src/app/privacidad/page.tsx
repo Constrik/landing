@@ -76,8 +76,9 @@ export default function PrivacidadPage() {
                 productos y servicios de Constrik similares a los que has
                 probado (art. 21.2 de la LSSI); puedes oponerte en cualquier
                 momento escribiendo a info@constrik.com o desde cualquiera de
-                nuestras comunicaciones. Para verificar que no eres un robot
-                usamos Cloudflare Turnstile.
+                nuestras comunicaciones. Registramos la solicitud en nuestra
+                herramienta de gestión comercial (HubSpot). Para verificar que
+                no eres un robot usamos Cloudflare Turnstile.
               </li>
               <li>
                 <strong>Datos de navegación (analítica).</strong> Con tu
@@ -126,8 +127,9 @@ export default function PrivacidadPage() {
             <p className="mt-2">
               No cedemos tus datos a terceros salvo obligación legal. Para
               prestar el servicio nos apoyamos en proveedores tecnológicos
-              (alojamiento, envío de correo, verificación anti-robots y
-              analítica), que actúan como encargados
+              (alojamiento, envío de correo, verificación anti-robots,
+              gestión de clientes (CRM, HubSpot) y analítica), que actúan como
+              encargados
               del tratamiento bajo contrato. Algunos pueden implicar
               transferencias internacionales de datos, en cuyo caso se realizan
               con las garantías adecuadas previstas en el RGPD (p. ej. cláusulas
