@@ -40,7 +40,7 @@ export default function AvisoLegalPage() {
                 <strong>NIF:</strong> B88773114
               </li>
               <li>
-                <strong>Domicilio:</strong> Passeig Garbí 132, 08860
+                <strong>Domicilio:</strong> c/ Església 111, 4-3, 08860
                 Castelldefels (Barcelona), España
               </li>
               <li>

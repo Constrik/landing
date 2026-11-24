@@ -88,6 +88,14 @@ export function Footer() {
                   Cookies
                 </a>
               </li>
+              <li>
+                <a
+                  href="/politica-sistema-gestion"
+                  className="hover:text-slate-900"
+                >
+                  Política del sistema de gestión
+                </a>
+              </li>
             </ul>
           </div>
         </div>

@@ -17,7 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly",
     priority: 0.8,
   }));
-  const legal: MetadataRoute.Sitemap = ["/aviso-legal", "/privacidad", "/cookies"].map(
+  const legal: MetadataRoute.Sitemap = [
+    "/aviso-legal",
+    "/privacidad",
+    "/cookies",
+    "/politica-sistema-gestion",
+  ].map(
     (path) => ({
       url: `${SITE_URL}${path}`,
       lastModified: now,
